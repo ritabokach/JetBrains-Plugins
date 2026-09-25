@@ -1,4 +1,4 @@
-rootProject.name = "KotlinProject"
+rootProject.name = "jetbrains-plugins"
 
 pluginManagement {
     repositories {

@@ -20,11 +20,11 @@ dependencies {
 }
 
 android {
-    namespace = "org.example.project"
+    namespace = "ru.bokach.plugins"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
 
     defaultConfig {
-        applicationId = "org.example.project"
+        applicationId = "ru.bokach.plugins"
         minSdk = libs.versions.android.minSdk.get().toInt()
         targetSdk = libs.versions.android.targetSdk.get().toInt()
         versionCode = 1

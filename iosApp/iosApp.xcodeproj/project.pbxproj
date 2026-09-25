@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		E7E1B2D7C5735D36C0A57FE7 /* KotlinProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KotlinProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E7E1B2D7C5735D36C0A57FE7 /* JetBrainsPlugins.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JetBrainsPlugins.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -59,7 +59,7 @@
 		5C65855025710191955F6B30 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E7E1B2D7C5735D36C0A57FE7 /* KotlinProject.app */,
+				E7E1B2D7C5735D36C0A57FE7 /* JetBrainsPlugins.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -87,7 +87,7 @@
 			packageProductDependencies = (
 			);
 			productName = iosApp;
-			productReference = E7E1B2D7C5735D36C0A57FE7 /* KotlinProject.app */;
+			productReference = E7E1B2D7C5735D36C0A57FE7 /* JetBrainsPlugins.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
