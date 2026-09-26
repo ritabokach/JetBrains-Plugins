@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_title">JetBrains Plugins</string>
+    <string name="action_back">Back</string>
+    <string name="action_toggle_theme">Toggle theme</string>
+
+    <string name="card_downloads">%1$s downloads</string>
+    <string name="card_rating">★ %1$s</string>
+    <string name="card_no_rating">no ratings</string>
+
+    <string name="pricing_free">Free</string>
+    <string name="pricing_freemium">Freemium</string>
+    <string name="pricing_paid">Paid</string>
+
+    <string name="detail_xml_id">Plugin ID</string>
+    <string name="detail_downloads">Downloads</string>
+    <string name="detail_rating">Rating</string>
+    <string name="detail_rating_none">No ratings yet</string>
+    <string name="detail_tags">Tags</string>
+    <string name="detail_vendor">Vendor</string>
+    <string name="detail_open_vendor">Open vendor page</string>
+    <string name="detail_links">Links</string>
+
+    <string name="link_doc">Documentation</string>
+    <string name="link_source">Source code</string>
+    <string name="link_bugtracker">Issue tracker</string>
+    <string name="link_forum">Forum</string>
+
+    <string name="vendor_verified">Verified vendor</string>
+    <string name="vendor_unverified">Unverified vendor</string>
+    <string name="vendor_country">Country</string>
+    <string name="vendor_site">Website</string>
+    <string name="vendor_plugins">Plugins by this vendor: %1$s</string>
+</resources>
