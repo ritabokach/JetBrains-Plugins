@@ -2,7 +2,6 @@ package ru.bokach.plugins.catalog
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -21,29 +20,17 @@ class CatalogViewModel(
     private val _state = MutableStateFlow(CatalogState())
     val state: StateFlow<CatalogState> = _state.asStateFlow()
 
-    private var searchJob: Job? = null
-
     init {
-        search(query = "")
+        viewModelScope.launch {
+            val plugins = repository.getPlugins()
+            _state.update { it.copy(items = repository.toCards(plugins)) }
+        }
     }
 
     fun onIntent(intent: CatalogIntent) {
         when (intent) {
-            is CatalogIntent.QueryChanged -> {
-                _state.update { it.copy(query = intent.value) }
-                search(intent.value)
-            }
-
             is CatalogIntent.PluginClicked ->
                 navigator.open(Screen.PluginDetail(intent.pluginId))
-        }
-    }
-
-    private fun search(query: String) {
-        searchJob?.cancel()
-        searchJob = viewModelScope.launch {
-            val plugins = repository.searchPlugins(query)
-            _state.update { it.copy(items = repository.toCards(plugins)) }
         }
     }
 }

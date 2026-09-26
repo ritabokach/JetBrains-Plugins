@@ -3,9 +3,6 @@
     <string name="action_back">Back</string>
     <string name="action_toggle_theme">Toggle theme</string>
 
-    <string name="catalog_search_hint">Search by name or tag</string>
-    <string name="catalog_empty">Nothing found for “%1$s”</string>
-
     <string name="card_downloads">%1$s downloads</string>
     <string name="card_rating">★ %1$s</string>
     <string name="card_no_rating">no ratings</string>

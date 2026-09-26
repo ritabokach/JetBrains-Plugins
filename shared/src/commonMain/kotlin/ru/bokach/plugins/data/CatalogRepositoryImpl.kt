@@ -6,14 +6,7 @@ import ru.bokach.plugins.domain.Vendor
 
 class CatalogRepositoryImpl : CatalogRepository {
 
-    override suspend fun searchPlugins(query: String): List<Plugin> {
-        val needle = query.trim()
-        if (needle.isEmpty()) return mockPlugins
-        return mockPlugins.filter { plugin ->
-            plugin.name.contains(needle, ignoreCase = true) ||
-                plugin.tags.any { it.contains(needle, ignoreCase = true) }
-        }
-    }
+    override suspend fun getPlugins(): List<Plugin> = mockPlugins
 
     override suspend fun getPlugin(id: Int): Plugin = mockPlugins.first { it.id == id }
 

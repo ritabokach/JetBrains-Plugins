@@ -3,9 +3,6 @@
     <string name="action_back">Назад</string>
     <string name="action_toggle_theme">Переключить тему</string>
 
-    <string name="catalog_search_hint">Поиск по названию или тегу</string>
-    <string name="catalog_empty">По запросу «%1$s» ничего не нашлось</string>
-
     <string name="card_downloads">%1$s загрузок</string>
     <string name="card_rating">★ %1$s</string>
     <string name="card_no_rating">без оценок</string>

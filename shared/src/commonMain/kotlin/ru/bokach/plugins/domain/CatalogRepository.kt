@@ -2,7 +2,7 @@ package ru.bokach.plugins.domain
 
 interface CatalogRepository {
 
-    suspend fun searchPlugins(query: String): List<Plugin>
+    suspend fun getPlugins(): List<Plugin>
 
     suspend fun getPlugin(id: Int): Plugin
 
