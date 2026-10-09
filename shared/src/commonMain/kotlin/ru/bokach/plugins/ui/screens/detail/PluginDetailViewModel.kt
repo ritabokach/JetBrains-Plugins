@@ -1,4 +1,4 @@
-package ru.bokach.plugins.detail
+package ru.bokach.plugins.ui.screens.detail
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

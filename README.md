@@ -45,13 +45,11 @@ iOS собирается только на macOS с Xcode — в вехе это
 shared/src/commonMain/kotlin/ru/bokach/plugins/
   domain/          модели и интерфейс каталога — не знает ни про UI, ни про сеть
   data/            моки и реализация репозитория. В В2 меняется только это
-  catalog/         состояние, намерения и ViewModel экрана списка
-  detail/          то же для детали плагина
-  vendor/          то же для страницы вендора
   ui/model/        UI-модели и форматирование: сокращение загрузок, округление оценки
   ui/navigation/   бэкстек и хост Navigation 3
   ui/components/   переиспользуемые куски: карточка, чипы, шапка
-  ui/screens/      три экрана, каждый рисуется из состояния
+  ui/screens/      по пакету на экран: catalog, detail, vendor. В каждом —
+                   composable, состояние, намерения и ViewModel
   composeResources/values, values-en   подписи интерфейса, две локали
 ```
 

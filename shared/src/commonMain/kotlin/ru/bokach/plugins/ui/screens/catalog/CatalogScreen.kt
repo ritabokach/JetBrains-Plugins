@@ -9,8 +9,6 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import ru.bokach.plugins.catalog.CatalogIntent
-import ru.bokach.plugins.catalog.CatalogState
 import ru.bokach.plugins.ui.components.PluginCard
 
 @Composable

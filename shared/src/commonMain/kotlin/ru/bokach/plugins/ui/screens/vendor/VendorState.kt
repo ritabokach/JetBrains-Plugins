@@ -1,4 +1,4 @@
-package ru.bokach.plugins.vendor
+package ru.bokach.plugins.ui.screens.vendor
 
 import ru.bokach.plugins.ui.model.PluginCardUi
 import ru.bokach.plugins.ui.model.VendorUi

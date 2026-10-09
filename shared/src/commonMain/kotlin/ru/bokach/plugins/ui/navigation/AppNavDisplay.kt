@@ -15,13 +15,13 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.ui.NavDisplay
 import ru.bokach.plugins.Screen
-import ru.bokach.plugins.catalog.CatalogViewModel
-import ru.bokach.plugins.detail.PluginDetailViewModel
 import ru.bokach.plugins.domain.CatalogRepository
 import ru.bokach.plugins.ui.screens.catalog.CatalogScreen
+import ru.bokach.plugins.ui.screens.catalog.CatalogViewModel
 import ru.bokach.plugins.ui.screens.detail.PluginDetailScreen
+import ru.bokach.plugins.ui.screens.detail.PluginDetailViewModel
 import ru.bokach.plugins.ui.screens.vendor.VendorScreen
-import ru.bokach.plugins.vendor.VendorViewModel
+import ru.bokach.plugins.ui.screens.vendor.VendorViewModel
 
 private const val TRANSITION_MS = 300
 

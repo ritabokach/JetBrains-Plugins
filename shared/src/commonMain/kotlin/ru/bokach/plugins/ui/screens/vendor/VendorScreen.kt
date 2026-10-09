@@ -23,8 +23,6 @@ import ru.bokach.plugins.resources.vendor_verified
 import ru.bokach.plugins.ui.components.FactRow
 import ru.bokach.plugins.ui.components.PluginCard
 import ru.bokach.plugins.ui.model.VendorUi
-import ru.bokach.plugins.vendor.VendorIntent
-import ru.bokach.plugins.vendor.VendorState
 
 @Composable
 fun VendorScreen(

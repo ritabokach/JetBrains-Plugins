@@ -1,4 +1,4 @@
-package ru.bokach.plugins.catalog
+package ru.bokach.plugins.ui.screens.catalog
 
 import ru.bokach.plugins.ui.model.PluginCardUi
 

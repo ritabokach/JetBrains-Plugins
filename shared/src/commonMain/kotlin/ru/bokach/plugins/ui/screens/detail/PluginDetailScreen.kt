@@ -19,7 +19,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
-import ru.bokach.plugins.detail.PluginDetailIntent
 import ru.bokach.plugins.resources.Res
 import ru.bokach.plugins.resources.detail_downloads
 import ru.bokach.plugins.resources.detail_links
