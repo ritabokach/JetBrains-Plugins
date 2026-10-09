@@ -3,6 +3,8 @@ package ru.bokach.plugins.ui.model
 import ru.bokach.plugins.domain.CatalogRepository
 import ru.bokach.plugins.domain.Plugin
 import ru.bokach.plugins.domain.PricingModel
+import ru.bokach.plugins.utils.formatDownloads
+import ru.bokach.plugins.utils.formatRating
 
 data class PluginDetailUi(
     val id: Int,

@@ -1,4 +1,4 @@
-package ru.bokach.plugins.ui.model
+package ru.bokach.plugins.utils
 
 import kotlin.math.roundToInt
 
