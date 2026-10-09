@@ -7,6 +7,10 @@
     <string name="card_rating">★ %1$s</string>
     <string name="card_no_rating">no ratings</string>
 
+    <string name="search_hint">Search by name</string>
+    <string name="search_clear">Clear search</string>
+    <string name="search_empty">Nothing matches “%1$s”</string>
+
     <string name="pricing_free">Free</string>
     <string name="pricing_freemium">Freemium</string>
     <string name="pricing_paid">Paid</string>

@@ -7,6 +7,10 @@
     <string name="card_rating">★ %1$s</string>
     <string name="card_no_rating">без оценок</string>
 
+    <string name="search_hint">Поиск по названию</string>
+    <string name="search_clear">Очистить поиск</string>
+    <string name="search_empty">По запросу «%1$s» ничего не нашлось</string>
+
     <string name="pricing_free">Бесплатно</string>
     <string name="pricing_freemium">Условно бесплатно</string>
     <string name="pricing_paid">Платно</string>
