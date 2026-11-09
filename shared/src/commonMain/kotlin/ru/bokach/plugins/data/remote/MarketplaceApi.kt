@@ -25,6 +25,7 @@ internal class MarketplaceApi(
     private val parsingDispatcher: CoroutineDispatcher = Dispatchers.Default,
 ) {
 
+    /** Results come most downloaded first; without `orderBy` the API uses its own mixed order. */
     suspend fun searchPlugins(
         query: String,
         offset: Int,
@@ -33,6 +34,7 @@ internal class MarketplaceApi(
     ): SearchResponseDto = get("api", "searchPlugins") {
         parameter("max", max)
         parameter("offset", offset)
+        parameter("orderBy", "downloads")
         if (query.isNotBlank()) parameter("search", query)
         if (organization != null) parameter("organization", organization)
     }
