@@ -13,7 +13,7 @@ import ru.bokach.plugins.ui.model.toUi
 import ru.bokach.plugins.ui.navigation.Navigator
 
 class VendorViewModel(
-    vendorId: Int,
+    vendorSlug: String,
     private val navigator: Navigator,
     private val repository: CatalogRepository,
 ) : ViewModel() {
@@ -23,10 +23,11 @@ class VendorViewModel(
 
     init {
         viewModelScope.launch {
-            val plugins = repository.getPluginsByVendor(vendorId)
+            val vendor = repository.getVendor(vendorSlug)
+            val plugins = repository.getPluginsByVendor(vendor.name)
             _state.value = VendorState(
-                vendor = repository.getVendor(vendorId).toUi(),
-                plugins = repository.toCards(plugins),
+                vendor = vendor.toUi(),
+                plugins = plugins.items.toCards(),
             )
         }
     }

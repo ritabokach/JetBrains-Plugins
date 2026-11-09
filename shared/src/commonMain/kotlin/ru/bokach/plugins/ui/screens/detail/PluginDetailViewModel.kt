@@ -23,16 +23,15 @@ class PluginDetailViewModel(
 
     init {
         viewModelScope.launch {
-            val plugin = repository.getPlugin(pluginId)
-            _state.value = repository.toDetail(plugin)
+            _state.value = repository.getPlugin(pluginId).toDetail()
         }
     }
 
     fun onIntent(intent: PluginDetailIntent) {
         when (intent) {
             PluginDetailIntent.VendorClicked -> {
-                val vendorId = _state.value?.vendorId ?: return
-                navigator.open(Screen.VendorPage(vendorId))
+                val vendorSlug = _state.value?.vendorSlug ?: return
+                navigator.open(Screen.VendorPage(vendorSlug))
             }
         }
     }

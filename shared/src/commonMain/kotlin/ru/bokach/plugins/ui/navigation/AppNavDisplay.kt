@@ -59,8 +59,8 @@ fun AppNavDisplay(
             }
 
             entry<Screen.VendorPage> { key ->
-                val viewModel: VendorViewModel = viewModel(key = "vendor-${key.vendorId}") {
-                    VendorViewModel(key.vendorId, navigator, repository)
+                val viewModel: VendorViewModel = viewModel(key = "vendor-${key.vendorSlug}") {
+                    VendorViewModel(key.vendorSlug, navigator, repository)
                 }
                 val state by viewModel.state.collectAsStateWithLifecycle()
                 VendorScreen(state = state, onIntent = viewModel::onIntent)

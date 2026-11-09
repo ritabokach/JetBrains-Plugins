@@ -29,8 +29,8 @@ class CatalogViewModel(
 
     init {
         viewModelScope.launch {
-            val plugins = repository.getPlugins()
-            allItems.value = repository.toCards(plugins)
+            val page = repository.searchPlugins(query = "", offset = 0)
+            allItems.value = page.items.toCards()
         }
     }
 
