@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
@@ -34,7 +35,9 @@ import ru.bokach.plugins.resources.link_doc
 import ru.bokach.plugins.resources.link_forum
 import ru.bokach.plugins.resources.link_source
 import ru.bokach.plugins.ui.components.CardSurface
+import ru.bokach.plugins.ui.components.ErrorMessage
 import ru.bokach.plugins.ui.components.FactRow
+import ru.bokach.plugins.ui.components.LoadingIndicator
 import ru.bokach.plugins.ui.components.PluginAvatar
 import ru.bokach.plugins.ui.components.PricingChip
 import ru.bokach.plugins.ui.components.Section
@@ -44,6 +47,22 @@ import ru.bokach.plugins.ui.model.PluginLinkKind
 
 @Composable
 fun PluginDetailScreen(
+    state: PluginDetailState,
+    onIntent: (PluginDetailIntent) -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    when (state) {
+        PluginDetailState.Loading -> LoadingIndicator(modifier.fillMaxSize())
+        PluginDetailState.Error -> ErrorMessage(
+            onRetry = { onIntent(PluginDetailIntent.Retry) },
+            modifier = modifier.fillMaxSize(),
+        )
+        is PluginDetailState.Content -> PluginDetailContent(state.plugin, onIntent, modifier)
+    }
+}
+
+@Composable
+private fun PluginDetailContent(
     plugin: PluginDetailUi,
     onIntent: (PluginDetailIntent) -> Unit,
     modifier: Modifier = Modifier,

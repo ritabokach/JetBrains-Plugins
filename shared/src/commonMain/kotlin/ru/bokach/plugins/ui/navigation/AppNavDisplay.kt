@@ -52,10 +52,8 @@ fun AppNavDisplay(
                 val viewModel: PluginDetailViewModel = viewModel(key = "plugin-${key.pluginId}") {
                     PluginDetailViewModel(key.pluginId, navigator, repository)
                 }
-                val plugin by viewModel.state.collectAsStateWithLifecycle()
-                plugin?.let {
-                    PluginDetailScreen(plugin = it, onIntent = viewModel::onIntent)
-                }
+                val state by viewModel.state.collectAsStateWithLifecycle()
+                PluginDetailScreen(state = state, onIntent = viewModel::onIntent)
             }
 
             entry<Screen.VendorPage> { key ->

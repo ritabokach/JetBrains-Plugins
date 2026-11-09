@@ -24,7 +24,10 @@ import ru.bokach.plugins.resources.ic_search
 import ru.bokach.plugins.resources.search_clear
 import ru.bokach.plugins.resources.search_empty
 import ru.bokach.plugins.resources.search_hint
+import ru.bokach.plugins.ui.components.ErrorMessage
+import ru.bokach.plugins.ui.components.LoadingIndicator
 import ru.bokach.plugins.ui.components.PluginCard
+import ru.bokach.plugins.ui.model.LoadStatus
 
 @Composable
 fun CatalogScreen(
@@ -44,7 +47,19 @@ fun CatalogScreen(
                 modifier = Modifier.fillMaxWidth(),
             )
         }
-        if (state.items.isEmpty() && state.query.isNotBlank()) {
+        when (state.status) {
+            LoadStatus.Loading -> item(key = "loading") {
+                LoadingIndicator(Modifier.fillMaxWidth())
+            }
+            LoadStatus.Error -> item(key = "error") {
+                ErrorMessage(
+                    onRetry = { onIntent(CatalogIntent.Retry) },
+                    modifier = Modifier.fillMaxWidth(),
+                )
+            }
+            LoadStatus.Idle -> Unit
+        }
+        if (state.status == LoadStatus.Idle && state.items.isEmpty() && state.query.isNotBlank()) {
             item(key = "empty") {
                 Text(
                     text = stringResource(Res.string.search_empty, state.query.trim()),

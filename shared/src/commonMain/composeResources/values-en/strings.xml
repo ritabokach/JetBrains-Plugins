@@ -34,4 +34,7 @@
     <string name="vendor_country">Country</string>
     <string name="vendor_site">Website</string>
     <string name="vendor_plugins">Plugins by this vendor: %1$s</string>
+
+    <string name="error_load">Couldn\'t load the data. Check your internet connection.</string>
+    <string name="action_retry">Retry</string>
 </resources>

@@ -34,4 +34,7 @@
     <string name="vendor_country">Страна</string>
     <string name="vendor_site">Сайт</string>
     <string name="vendor_plugins">Плагины вендора: %1$s</string>
+
+    <string name="error_load">Не удалось загрузить данные. Проверьте подключение к интернету.</string>
+    <string name="action_retry">Повторить</string>
 </resources>
