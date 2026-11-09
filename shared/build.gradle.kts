@@ -6,6 +6,29 @@ plugins {
     alias(libs.plugins.androidMultiplatformLibrary)
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
+    alias(libs.plugins.kotlinSerialization)
+}
+
+// The API address lives in gradle.properties, not in the sources: the build
+// turns it into a generated ApiConfig object that commonMain compiles against.
+val generateApiConfig by tasks.registering {
+    val baseUrl = providers.gradleProperty("marketplace.baseUrl")
+    val outputDir = layout.buildDirectory.dir("generated/apiConfig/kotlin")
+    inputs.property("baseUrl", baseUrl)
+    outputs.dir(outputDir)
+    doLast {
+        val file = outputDir.get().file("ru/bokach/plugins/data/remote/ApiConfig.kt").asFile
+        file.parentFile.mkdirs()
+        file.writeText(
+            """
+            |package ru.bokach.plugins.data.remote
+            |
+            |internal object ApiConfig {
+            |    const val BASE_URL: String = "${baseUrl.get().trimEnd('/')}"
+            |}
+            |""".trimMargin(),
+        )
+    }
 }
 
 kotlin {
@@ -49,6 +72,19 @@ kotlin {
         androidMain.dependencies {
             implementation(libs.compose.uiToolingPreview)
             implementation(libs.compose.uiTooling)
+            implementation(libs.ktor.clientOkhttp)
+        }
+        jvmMain.dependencies {
+            implementation(libs.ktor.clientCio)
+        }
+        webMain.dependencies {
+            implementation(libs.ktor.clientJs)
+        }
+        iosMain.dependencies {
+            implementation(libs.ktor.clientDarwin)
+        }
+        commonMain {
+            kotlin.srcDir(generateApiConfig)
         }
         commonMain.dependencies {
             implementation(libs.compose.runtime)
@@ -62,6 +98,8 @@ kotlin {
             implementation(libs.navigation3.runtime)
             implementation(libs.navigation3.ui)
             implementation(libs.kotlinx.coroutinesCore)
+            implementation(libs.kotlinx.serializationJson)
+            implementation(libs.ktor.clientCore)
         }
         jsMain.dependencies {
             implementation(libs.wrappers.browser)
