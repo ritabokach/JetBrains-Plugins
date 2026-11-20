@@ -1,6 +1,5 @@
 package ru.bokach.plugins.ui.model
 
-import ru.bokach.plugins.domain.CatalogRepository
 import ru.bokach.plugins.domain.Plugin
 import ru.bokach.plugins.domain.PricingModel
 import ru.bokach.plugins.utils.formatDownloads
@@ -15,7 +14,7 @@ data class PluginDetailUi(
     val rating: String?,
     val pricing: PricingModel,
     val tags: List<String>,
-    val vendorId: Int,
+    val vendorSlug: String?,
     val vendorName: String,
     val links: List<PluginLink>,
 )
@@ -24,18 +23,18 @@ data class PluginLink(val kind: PluginLinkKind, val url: String)
 
 enum class PluginLinkKind { DOC, SOURCE, BUGTRACKER, FORUM }
 
-internal suspend fun CatalogRepository.toDetail(plugin: Plugin): PluginDetailUi = PluginDetailUi(
-    id = plugin.id,
-    name = plugin.name,
-    xmlId = plugin.xmlId,
-    preview = plugin.preview,
-    downloads = formatDownloads(plugin.downloads),
-    rating = plugin.rating?.let(::formatRating),
-    pricing = plugin.pricingModel,
-    tags = plugin.tags,
-    vendorId = plugin.vendorId,
-    vendorName = getVendor(plugin.vendorId).name,
-    links = plugin.links(),
+internal fun Plugin.toDetail(): PluginDetailUi = PluginDetailUi(
+    id = id,
+    name = name,
+    xmlId = xmlId,
+    preview = preview,
+    downloads = formatDownloads(downloads),
+    rating = rating?.let(::formatRating),
+    pricing = pricingModel,
+    tags = tags,
+    vendorSlug = vendorSlug,
+    vendorName = vendorName,
+    links = links(),
 )
 
 private fun Plugin.links(): List<PluginLink> = listOfNotNull(

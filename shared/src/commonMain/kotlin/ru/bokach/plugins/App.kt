@@ -3,6 +3,7 @@ package ru.bokach.plugins
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -12,6 +13,8 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import ru.bokach.plugins.data.CatalogRepositoryImpl
+import ru.bokach.plugins.data.remote.MarketplaceApi
+import ru.bokach.plugins.data.remote.createHttpClient
 import ru.bokach.plugins.domain.CatalogRepository
 import ru.bokach.plugins.resources.Res
 import ru.bokach.plugins.resources.action_toggle_theme
@@ -26,7 +29,11 @@ fun App() {
     var darkTheme by remember { mutableStateOf(false) }
 
     AppTheme(darkTheme) {
-        val repository: CatalogRepository = remember { CatalogRepositoryImpl() }
+        val httpClient = remember { createHttpClient() }
+        DisposableEffect(httpClient) { onDispose { httpClient.close() } }
+        val repository: CatalogRepository = remember(httpClient) {
+            CatalogRepositoryImpl(MarketplaceApi(httpClient))
+        }
         val navigator = remember { Navigator() }
 
         val backStack by navigator.backStack.collectAsStateWithLifecycle()

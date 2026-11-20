@@ -4,6 +4,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -20,7 +21,9 @@ import ru.bokach.plugins.resources.vendor_plugins
 import ru.bokach.plugins.resources.vendor_site
 import ru.bokach.plugins.resources.vendor_unverified
 import ru.bokach.plugins.resources.vendor_verified
+import ru.bokach.plugins.ui.components.ErrorMessage
 import ru.bokach.plugins.ui.components.FactRow
+import ru.bokach.plugins.ui.components.LoadingIndicator
 import ru.bokach.plugins.ui.components.PluginCard
 import ru.bokach.plugins.ui.model.VendorUi
 
@@ -30,21 +33,35 @@ fun VendorScreen(
     onIntent: (VendorIntent) -> Unit,
     modifier: Modifier = Modifier,
 ) {
+    when (state) {
+        VendorState.Loading -> LoadingIndicator(modifier.fillMaxSize())
+        VendorState.Error -> ErrorMessage(
+            onRetry = { onIntent(VendorIntent.Retry) },
+            modifier = modifier.fillMaxSize(),
+        )
+        is VendorState.Content -> VendorContent(state, onIntent, modifier)
+    }
+}
+
+@Composable
+private fun VendorContent(
+    state: VendorState.Content,
+    onIntent: (VendorIntent) -> Unit,
+    modifier: Modifier = Modifier,
+) {
     LazyColumn(
         modifier = modifier,
         contentPadding = PaddingValues(16.dp),
         verticalArrangement = Arrangement.spacedBy(12.dp),
     ) {
-        state.vendor?.let { vendor ->
-            item { VendorHeader(vendor) }
-            item {
-                Text(
-                    text = stringResource(Res.string.vendor_plugins, state.plugins.size),
-                    style = MaterialTheme.typography.titleSmall,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    modifier = Modifier.padding(top = 8.dp),
-                )
-            }
+        item(key = "header") { VendorHeader(state.vendor) }
+        item(key = "plugins-title") {
+            Text(
+                text = stringResource(Res.string.vendor_plugins, state.totalPlugins),
+                style = MaterialTheme.typography.titleSmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                modifier = Modifier.padding(top = 8.dp),
+            )
         }
         items(state.plugins, key = { it.id }) { plugin ->
             PluginCard(

@@ -52,15 +52,13 @@ fun AppNavDisplay(
                 val viewModel: PluginDetailViewModel = viewModel(key = "plugin-${key.pluginId}") {
                     PluginDetailViewModel(key.pluginId, navigator, repository)
                 }
-                val plugin by viewModel.state.collectAsStateWithLifecycle()
-                plugin?.let {
-                    PluginDetailScreen(plugin = it, onIntent = viewModel::onIntent)
-                }
+                val state by viewModel.state.collectAsStateWithLifecycle()
+                PluginDetailScreen(state = state, onIntent = viewModel::onIntent)
             }
 
             entry<Screen.VendorPage> { key ->
-                val viewModel: VendorViewModel = viewModel(key = "vendor-${key.vendorId}") {
-                    VendorViewModel(key.vendorId, navigator, repository)
+                val viewModel: VendorViewModel = viewModel(key = "vendor-${key.vendorSlug}") {
+                    VendorViewModel(key.vendorSlug, navigator, repository)
                 }
                 val state by viewModel.state.collectAsStateWithLifecycle()
                 VendorScreen(state = state, onIntent = viewModel::onIntent)
