@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_title">Плагины JetBrains</string>
+    <string name="action_back">Назад</string>
+    <string name="action_toggle_theme">Переключить тему</string>
+
+    <string name="card_downloads">%1$s загрузок</string>
+    <string name="card_rating">★ %1$s</string>
+    <string name="card_no_rating">без оценок</string>
+
+    <string name="search_hint">Поиск по названию</string>
+    <string name="search_clear">Очистить поиск</string>
+    <string name="search_empty">По запросу «%1$s» ничего не нашлось</string>
+
+    <string name="pricing_free">Бесплатно</string>
+    <string name="pricing_freemium">Условно бесплатно</string>
+    <string name="pricing_paid">Платно</string>
+
+    <string name="detail_xml_id">Идентификатор</string>
+    <string name="detail_downloads">Загрузок</string>
+    <string name="detail_rating">Оценка</string>
+    <string name="detail_rating_none">Оценок пока нет</string>
+    <string name="detail_tags">Теги</string>
+    <string name="detail_vendor">Вендор</string>
+    <string name="detail_open_vendor">Открыть страницу вендора</string>
+    <string name="detail_links">Ссылки</string>
+
+    <string name="link_doc">Документация</string>
+    <string name="link_source">Исходный код</string>
+    <string name="link_bugtracker">Баг-трекер</string>
+    <string name="link_forum">Форум</string>
+
+    <string name="vendor_verified">Проверенный вендор</string>
+    <string name="vendor_unverified">Вендор не проверен</string>
+    <string name="vendor_country">Страна</string>
+    <string name="vendor_site">Сайт</string>
+    <string name="vendor_plugins">Плагины вендора: %1$s</string>
+</resources>
